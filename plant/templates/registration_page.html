@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% if error %}
+    <p style="color: red">{{ error }}</p>
+{% endif %}
+<form method="post">
+  {% csrf_token %}
+  <label for="name">Введите ФИО:</label>
+  <input type="text" id="name" name="name" maxlength="50">
+    <br>
+    <br>
+  <label for="position">Должность:</label>
+    <select id="position" name="position">
+    {% for p in positions %}
+      <option value="{{ p }}">{{ p }}</option>
+    {% endfor %}
+  </select>
+    <br>
+    <br>
+  <label for="boss">Руководитель:</label>
+  <input type="checkbox" id="boss" name="boss">
+    <br>
+    <br>
+  <label for="brigade">Бригада:</label>
+  <select id="brigade" name="brigade">
+    {% for b in brigades %}
+      <option value="{{ b }}">{{ b }}</option>
+    {% endfor %}
+  </select>
+    <br>
+    <br>
+  <input type="submit" value="Отправить">
+  <a href="http://127.0.0.1:8000/plant/employee"><h4>Вернуться</h4></a>
+</form>
+{% if good %}
+    <p style="color: green; text-align: center; font-size: 24px;">{{ good }}</p>
+{% endif %}
+</body>
+</html>

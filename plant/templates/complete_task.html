@@ -1,0 +1,23 @@
+<h3>Завершение задачи {{ task.complete_info }}</h3>
+{% if error %}
+<p style="color: red">{{ error }}</p>
+{% endif %}
+<form method="post">
+    {% csrf_token %}
+    <input type="hidden" name="task_id" value="{{ task.id }}">
+    <label>Дата завершения:</label>
+    <input type="datetime-local" name="end_date">
+    <br>
+    <label>Проведенные работы:</label>
+    <br>
+    <textarea id="description" name="description" rows="4" style="width: 500px;"></textarea>
+    <br>
+    <br>
+    <label>Введите пароль:</label>
+    <input type="password" id="password" name="password" placeholder="Введите пароль">
+    <br>
+    <br>
+    <button type="submit">Подтвердить</button>
+    <button type="button" onclick="window.history.back()">Отмена</button>
+</form>
+<a href="http://127.0.0.1:8000/plant/task"><h4>Вернуться</h4></a>

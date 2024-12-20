@@ -1,0 +1,8 @@
+.menu {
+    display: flex;
+    justify-content: space-between;
+}
+
+.menu a {
+    margin-right: 20px;
+}

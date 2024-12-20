@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% if error %}
+    <p style="color: red">{{ error }}</p>
+{% endif %}
+<form method="post">
+  {% csrf_token %}
+  <h3>Создать ремонт</h3>
+
+  <label for="equipment">Площадка:  </label>
+      <select id="equipment" name="equipment">
+    {% for a,b in eq %}
+      <option value="{{ b.id }}"> {{ b.full_info }}  </option>
+    {% endfor %}
+  </select>
+    <br>
+    <br>
+  <label for="brigade">Бригада:  </label>
+<!--  <input type="text" id="position" name="position" maxlength="50">-->
+    <select id="brigade" name="brigade">
+    {% for i,n in brigades %}
+      <option value="{{ i }}">{{ n.name }}</option>
+    {% endfor %}
+  </select>
+    <br>
+    <br>
+<label for="start_date">Начало:</label>
+  <input type="datetime-local" id="start_date" name="start_date" min="2020-01-01T00:00" max="2025-12-31T23:59">
+  <br>
+  <br>
+
+    <br>
+  <input type="submit" value="Сохранить">
+  <a href="http://127.0.0.1:8000/plant/repair"><h4>Вернуться</h4></a>
+</form>
+{% if good %}
+    <p style="color: green; text-align: center; font-size: 24px;">{{ good }}</p>
+{% endif %}
+</body>
+</html>

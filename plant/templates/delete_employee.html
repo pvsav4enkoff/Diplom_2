@@ -1,0 +1,7 @@
+<h1>Удалить сотрудника</h1>
+<p>Вы уверены, что хотите удалить сотрудника "{{ employee.name }}"?</p>
+<form method="post" action="{% url 'delete_employee' employee.pk %}" id="delete-form">
+    {% csrf_token %}
+    <button type="submit" name="delete" value="delete" onclick="return confirm('Вы уверены, что хотите удалить сотрудника?')">Удалить</button>
+    <button type="button" onclick="window.history.back()">Отмена</button>
+</form>

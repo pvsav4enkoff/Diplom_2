@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% if error %}
+    <p style="color: red">{{ error }}</p>
+{% endif %}
+
+<form method="post">
+  {% csrf_token %}
+
+  <h3>Создать работу</h3>
+
+  <label for="repair">Ремонт:  </label>
+      <select id="repair" name="repair">
+    {% for a,b in repairs %}
+      <option value="{{ b.id }}"> {{ b.select_info }}  </option>
+    {% endfor %}
+  </select>
+    <br>
+    <br>
+  <label for="task_object">Объект ремонта:  </label>
+    <select id="task_object" name="task_object">
+    {% for i,n in task_objects %}
+      <option value="{{ i }}">{{ i }} {{ n }}</option>
+    {% endfor %}
+  </select>
+      <br>
+      <br>
+  <label for="employee">Исполнитель:  </label>
+    <select id="employee" name="employee">
+    {% for i,n in employees %}
+      <option value="{{ i }}">{{ i }} {{ n }}</option>
+    {% endfor %}
+  </select>
+    <br>
+    <br>
+    <label for="employee_status">Руководитель работ:</label>
+  <input type="checkbox" id="employee_status" name="employee_status" value="True" {% if boss %} checked {% endif %}>
+    <br>
+    <br>
+
+<label for="start_date">Начало:</label>
+  <input type="datetime-local" id="start_date" name="start_date" min="2020-01-01T00:00" max="{{ current_date|date:'Y-m-d' }}T{{ current_date|time:'H:i' }}">
+  <br>
+  <br>
+
+  <input type="submit" value="Сохранить">
+
+
+
+  <a href="http://127.0.0.1:8000/plant/task"><h4>Вернуться</h4></a>
+</form>
+{% if good %}
+    <p style="color: green; text-align: center; font-size: 24px;">{{ good }}</p>
+{% endif %}
+</body>
+</html>

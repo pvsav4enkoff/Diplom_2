@@ -1,0 +1,46 @@
+<!-- equipment_tree.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Древовидная структура постов</title>
+    <style>
+        /* Стили для древовидной структуры */
+        .tree {
+            padding: 20px;
+        }
+        .tree ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .tree li {
+            margin-bottom: 10px;
+        }
+        .tree li ul {
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Древовидная структура постов</h1>
+    <div class="tree">
+        {% for equipment in equipment_list %}
+            <h2>{{ equipment.segment }} - {{ equipment.location }}</h2>
+            <ul>
+                {% for repair in equipment.repairs %}
+                    <li>
+                        <h3>{{ repair.start_date }} - {{ repair.end_date }} ({{ repair.status }})</h3>
+                        <ul>
+                            {% for task in repair.repair_tasks %}
+                                <li>
+                                    <h4>{{ task.description }} ({{ task.status }})</h4>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endfor %}
+    </div>
+</body>
+</html>

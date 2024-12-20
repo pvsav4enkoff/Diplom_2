@@ -1,0 +1,33 @@
+<!--{% load static %}-->
+<!--<link rel="stylesheet" type="text/css" href="{% static 'plant/style.css' %}">-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <header>
+        {% block pagename %}
+        {% endblock %}
+    </header>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'plant/style.css' %}">
+    <nav>
+        {% block menu %}
+        <div class="menu">
+            <a href="http://127.0.0.1:8000/plant"><h2>Главная</h2></a>
+            <a href="http://127.0.0.1:8000/plant/employee"><h2>Сотрудники</h2></a>
+            <a href="http://127.0.0.1:8000/plant/equipment"><h2>Плошадки</h2></a>
+            <a href="http://127.0.0.1:8000/plant/repair"><h2>Участки</h2></a>
+            <a href="http://127.0.0.1:8000/plant/task"><h2>Работы</h2></a>
+            <a href="http://127.0.0.1:8000/admin"><h2>Администратор</h2></a>
+        </div>
+        {% endblock %}
+    </nav>
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<h3>Завершение ремонта:</h3>
+<h4>Объект: {{ repair.equipment.segment }}</h4>
+
+<h4>Исполнители: {{ repair.brigade }}</h4>
+
+<h4>Дата начала: {{ repair.start_date|date:"d.m.Y H:i" }}</h4>
+
+{% if error %}
+<p style="color: red">{{ error }}</p>
+{% endif %}
+<form method="post">
+    {% csrf_token %}
+    <input type="hidden" name="repair_id" value="{{ repair.id }}">
+    <label>Дата завершения:</label>
+    <input type="datetime-local" name="end_date">
+    <label>Введите пароль:</label>
+    <input type="password" id="password" name="password" placeholder="Введите пароль">
+    <button type="submit">Подтвердить</button>
+    <button type="button" onclick="window.history.back()">Отмена</button>
+</form>
+<a href="http://127.0.0.1:8000/plant/repair"><h4>Вернуться</h4></a>

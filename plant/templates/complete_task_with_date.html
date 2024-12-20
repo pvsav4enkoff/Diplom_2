@@ -1,0 +1,15 @@
+<h1>Заверщить работу</h1>
+<p>Вы уверены, что хотите завершить работу "{{ task.name }}"?</p>
+
+<form method="post">
+    {% csrf_token %}
+    <label>Дата завершения:</label>
+    <input type="datetime-local" name="end_date">
+    <button type="submit">Подтвердить</button>
+    <button type="button" onclick="window.history.back()">Отмена</button>
+</form>
+
+
+
+
+

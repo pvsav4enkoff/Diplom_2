@@ -1,0 +1,45 @@
+поле с выбором из списка
+<form method="post">
+  {% csrf_token %}
+  <label for="username">Введите логин:</label>
+  <select id="username" name="username">
+    {% for user in users %}
+      <option value="{{ user.username }}">{{ user.username }}</option>
+    {% endfor %}
+  </select>
+</form>
+
+даты в фильтрах
+from datetime import date
+from myapp.models import MyModel
+
+my_date = date(2022, 1, 1)
+results = MyModel.objects.filter(my_date_field=my_date)
+
+from datetime import date
+from myapp.models import MyModel
+
+today = date.today()
+results = MyModel.objects.filter(my_date_field__gt=today)  # будущие даты
+results = MyModel.objects.filter(my_date_field__lt=today)  # прошедшие даты
+
+
+<form method="post">
+  {% csrf_token %}
+  <label for="username">Введите логин:</label>
+  <select id="username" name="username">
+    {% for user in users %}
+      <option value="{{ user.username }}">{{ user.username }}</option>
+    {% endfor %}
+  </select>
+</form>
+
+
+<!--                        <button type="submit" formaction="{% url 'edit_employee' post.id %}">Редактировать</button>-->
+<!--                        <button type="submit" formaction="{% url 'view_employee' post.id %}">Просмотр</button>-->
+
+
+    # brigade = forms.ChoiceField(choices=[(b.id, b.name) for b in Brigade.objects.all()], label='Бригада:')
+    # .values_list('name', flat=True)
+    # brigade = forms.ModelChoiceField(queryset=Brigade.objects.all(), label='brigade',empty_label='Выберите бригаду')
+    # brigade = forms.ModelChoiceField(queryset=Brigade.objects.all().values_list('id', flat=True), label='brigade',empty_label='Выберите бригаду')

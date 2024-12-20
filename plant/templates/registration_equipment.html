@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавить площадку</title>
+</head>
+<body>
+{% if error %}
+<p style="color: red">{{ error }}</p>
+{% endif %}
+<form method="post">
+    {% csrf_token %}
+
+    <h3>Создать площадку</h3>
+
+    <label for="location">Объект: </label>
+    <select id="location" name="location">
+        {% for i,n in locations %}
+        <option value="{{ i }}">{{ n }}</option>
+        {% endfor %}
+    </select>
+    <br>
+    <br>
+    <label for="segment">Участок: </label>
+    <select id="segment" name="segment">
+        {% for i,n in segments %}
+        <option value="{{ i }}">{{ n }}</option>
+        {% endfor %}
+    </select>
+    <br>
+    <br>
+    <label for="description">Описание:</label>
+    <input type="text" id="description" name="description">
+    <br>
+    <br>
+
+    <input type="submit" value="Сохранить">
+    <a href="http://127.0.0.1:8000/plant/equipment"><h4>Вернуться</h4></a>
+</form>
+{% if good %}
+<p style="color: green; text-align: center; font-size: 24px;">{{ good }}</p>
+{% endif %}
+</body>
+</html>
