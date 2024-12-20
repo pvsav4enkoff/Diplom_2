@@ -22,6 +22,9 @@ pip install datetime
 
 
 ![2024-12-19_18-59-03](https://github.com/user-attachments/assets/5de6a580-8769-43ef-9337-f521dc2d7163)
+
+Структура проекта
+
 нажмите на  http://127.0.0.1:8000/ 
 откроется авторизация логин admin пароль 123
 
